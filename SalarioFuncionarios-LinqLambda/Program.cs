@@ -12,7 +12,7 @@ namespace SalarioFuncionarios_LinqLambda {
             string path = @"C:\Apps C#\Employees.txt";
 
             List<Employee> employees = new List<Employee>();
-
+            try {
             Console.Write("Enter Salary - R$: ");
             double SalaryInfo = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.WriteLine("");
@@ -36,6 +36,11 @@ namespace SalarioFuncionarios_LinqLambda {
             Console.WriteLine("");
             var SumSalary = employees.Where(p => p.Salary >= SalaryInfo).Sum(p => p.Salary);
             Console.WriteLine("Sum of salary of people in the search: R$: " + SumSalary.ToString("F2", CultureInfo.InvariantCulture));
+            }
+            catch (Exception e) {
+                Console.WriteLine("A error was reported!");
+                Console.WriteLine(e);
+            }
         }
     }
 }
